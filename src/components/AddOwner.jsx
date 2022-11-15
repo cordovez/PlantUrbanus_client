@@ -1,13 +1,13 @@
 import { useMutation } from "@apollo/client";
 import { useState } from "react";
 
-import { ADD_OWNER } from "../graphql/mutations/ownerMutations";
+// import { ADD_OWNER } from "../graphql/mutations/ownerMutations";
 
 export default function AddOwner({ refetch }) {
   const [userName, setUsername] = useState("");
   const [email, setEmail] = useState("");
 
-  const [addOwner] = useMutation(ADD_OWNER);
+  // const [addOwner] = useMutation(ADD_OWNER);
 
   const HandleSubmit = () => {};
 
@@ -35,12 +35,12 @@ export default function AddOwner({ refetch }) {
       </form>
       <button
         onClick={() => {
-          addOwner({
-            variables: {
-              newOwner: { userName, email },
-            },
-          });
-          refetch();
+          // addOwner({
+          //   variables: {
+          //     newOwner: { userName, email },
+          //   },
+          // });
+          // refetch();
         }}
       >
         Add Owner

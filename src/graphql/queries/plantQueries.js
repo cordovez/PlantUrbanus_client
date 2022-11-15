@@ -9,4 +9,21 @@ const GET_PLANTS = gql`
     }
   }
 `;
-export { GET_PLANTS };
+
+const GET_PLANT = gql`
+  query Plant($plantId: ID!) {
+    plant(id: $plantId) {
+      commonName
+      datePurchased
+      familyName
+      healthRating
+      owner {
+        userName
+      }
+      public_id
+      scientificName
+      substrate
+    }
+  }
+`;
+export { GET_PLANTS, GET_PLANT };

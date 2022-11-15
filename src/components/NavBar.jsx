@@ -12,7 +12,7 @@ export default function NavBar() {
     navigate("/");
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <Box sx={{ flexGrow: 1 }}>

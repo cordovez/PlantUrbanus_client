@@ -1,13 +1,14 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+
 import { useForm } from "../utilities/hooks";
+import { TextField, Button, Container, Stack, Alert } from "@mui/material";
 
 import { useMutation } from "@apollo/client";
 
 import { REGISTER_OWNER } from "../graphql/mutations/ownerMutations";
 
-import { TextField, Button, Container, Stack, Alert } from "@mui/material";
 export default function Register() {
   const { onChange, onSubmit, values } = useForm(registerUserCallback, {
     userName: "",

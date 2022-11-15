@@ -1,4 +1,5 @@
 import { useReducer, createContext } from "react";
+import Cookies from "js-cookie";
 
 import jwtDecode from "jwt-decode";
 
@@ -6,13 +7,14 @@ const initialState = {
   user: null,
 };
 
-if (localStorage.getItem("token")) {
-  const decodedToken = jwtDecode(localStorage.getItem("token"));
+if (Cookies.get("token")) {
+  const decodedToken = jwtDecode(Cookies.get("token"));
 
   if (decodedToken.exp * 1000 < Date.now()) {
-    localStorage.removeItem("token");
+    Cookies.remove("token");
   } else {
     initialState.user = decodedToken;
+    Cookies.set("owner", decodedToken.user_id);
   }
 }
 
@@ -43,7 +45,7 @@ function AuthProvider(props) {
   const [state, dispatch] = useReducer(authReducer, initialState);
 
   const login = (userData) => {
-    localStorage.setItem("token", userData.token);
+    Cookies.set("token", userData.token, { expires: 1 });
     dispatch({
       type: "LOGIN",
       payload: userData,
@@ -51,7 +53,7 @@ function AuthProvider(props) {
   };
 
   function logout() {
-    localStorage.removeItem("token");
+    Cookies.remove("token");
     dispatch({ type: "LOGOUT" });
   }
 
