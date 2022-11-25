@@ -6,7 +6,6 @@ const REGISTER_OWNER = gql`
       email
       userName
       token
-      password
     }
   }
 `;
@@ -21,6 +20,21 @@ const LOGIN_OWNER = gql`
   }
 `;
 
+const UPDATE_OWNER = gql`
+  mutation Mutation($updateOwnerInput: UpdateOwnerInput) {
+    updateOwner(updateOwnerInput: $updateOwnerInput) {
+      id
+      userName
+      firstName
+      lastName
+      email
+      password
+      token
+      avatar
+    }
+  }
+`;
+
 // const ADD_OWNER = gql`
 //   mutation AddOwner($newOwner: OwnerInput) {
 //     addOwner(newOwner: $newOwner) {
@@ -29,4 +43,4 @@ const LOGIN_OWNER = gql`
 //     }
 //   }
 // `;
-export { REGISTER_OWNER, LOGIN_OWNER };
+export { REGISTER_OWNER, LOGIN_OWNER, UPDATE_OWNER };

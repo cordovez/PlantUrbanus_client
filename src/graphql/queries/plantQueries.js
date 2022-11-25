@@ -17,12 +17,15 @@ const GET_PLANT = gql`
       datePurchased
       familyName
       healthRating
+      createdAt
       owner {
+        id
         userName
       }
       public_id
       scientificName
       substrate
+      notes
     }
   }
 `;

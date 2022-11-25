@@ -1,4 +1,7 @@
-// A form to simplify the state of values
+import { useQuery } from "@apollo/client";
+import { GET_OWNER } from "../graphql/queries/ownerQueries";
+
+// 01 A form to simplify the state of values
 
 import { useState } from "react";
 
@@ -23,4 +26,16 @@ export const useForm = (callback, initialState = {}) => {
     onSubmit,
     values,
   };
+};
+
+// // 02 get logged in user name
+export const useOwnerName = (ownerId) => {
+  // Who is the owner:
+  const { data, loading, error } = useQuery(GET_OWNER, {
+    variables: { ownerId: ownerId },
+  });
+  if (loading) return <h1>... Loading</h1>;
+  if (error) return <p>... Error loading owner name: {error.message} ...</p>;
+  const ownerName = data.owner.userName;
+  return ownerName;
 };

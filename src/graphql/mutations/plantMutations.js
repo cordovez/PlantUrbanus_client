@@ -21,6 +21,7 @@ const UPDATE_PLANT = gql`
       healthRating
       scientificName
       substrate
+      notes
     }
   }
 `;

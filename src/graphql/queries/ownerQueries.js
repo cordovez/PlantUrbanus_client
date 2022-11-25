@@ -1,8 +1,32 @@
 import { gql } from "@apollo/client";
 
+const GET_OWNER = gql`
+  query Query($ownerId: ID!) {
+    owner(id: $ownerId) {
+      email
+      firstName
+      id
+      lastName
+      password
+      userName
+    }
+  }
+`;
+const GET_OWNER_PLANT_IDS = gql`
+  query Query($ownerId: ID!) {
+    owner(id: $ownerId) {
+      id
+      plants {
+        id
+      }
+    }
+  }
+`;
+
 const GET_OWNERS = gql`
   query {
     owners {
+      id
       userName
       firstName
       lastName
@@ -14,6 +38,7 @@ const GET_OWNERS = gql`
 const GET_OWNER_PLANTS = gql`
   query Owner($ownerId: ID!) {
     owner(id: $ownerId) {
+      id
       userName
       plants {
         id
@@ -28,4 +53,4 @@ const GET_OWNER_PLANTS = gql`
     }
   }
 `;
-export { GET_OWNERS, GET_OWNER_PLANTS };
+export { GET_OWNERS, GET_OWNER_PLANT_IDS, GET_OWNER_PLANTS, GET_OWNER };

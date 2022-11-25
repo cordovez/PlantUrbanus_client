@@ -50,9 +50,11 @@ function AuthProvider(props) {
       type: "LOGIN",
       payload: userData,
     });
+    window.location.reload();
   };
 
   function logout() {
+    Cookies.remove("owner");
     Cookies.remove("token");
     dispatch({ type: "LOGOUT" });
   }
