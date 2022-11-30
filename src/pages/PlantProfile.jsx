@@ -1,6 +1,7 @@
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
+import UpdatePlantModal from "../components/Modals/updatePlant/UpdatePlantModal";
 
 // GraphQL
 import { useQuery } from "@apollo/client";
@@ -13,8 +14,6 @@ import { AdvancedImage } from "@cloudinary/react";
 import { fill } from "@cloudinary/url-gen/actions/resize";
 import { dpr } from "@cloudinary/url-gen/actions/delivery";
 
-import UpdatePlantModal from "../components/updatePlant/UpdatePlantModal";
-
 // MUI
 
 import Typography from "@mui/material/Typography";
@@ -23,6 +22,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import Divider from "@mui/material/Divider";
 import { borderRadius } from "@mui/system";
+import { Update } from "@mui/icons-material";
 
 export default function PlantProfile() {
   let { plantId } = useParams();
@@ -76,6 +76,7 @@ export default function PlantProfile() {
           style={{ maxWidth: "400px", maxHeight: "300px" }}
         />
       </Box>
+      <UpdatePlantModal />
       <List sx={{ display: "flex", flexDirection: "row" }}>
         <Box
           mr="50px"

@@ -4,9 +4,12 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
 
 import { GET_OWNER } from "../../graphql/queries/ownerQueries";
 import { useQuery } from "@apollo/client";
+
+import UpdateOwnerModal from "../Modals/UpdateOwner/UpdateOwnerModal";
 
 const loggedInUser = Cookies.get("owner");
 const OwnerProfileCard = () => {
@@ -17,17 +20,8 @@ const OwnerProfileCard = () => {
   if (loading) return <Skeleton />;
   if (error) return <p>... Error loading owner data: {error.message} ...</p>;
   const owner = data.owner;
-  console.log(data);
+
   return (
-    // <Box
-    //   marginLeft="250px"
-    //   component="form"
-    //   sx={{
-    //     "& .MuiTextField-root": { m: 1, width: "25ch" },
-    //   }}
-    //   noValidate
-    //   autoComplete="off"
-    // >
     <Stack marginLeft="250px" spacing={2} sx={{ maxWidth: "70vw" }}>
       <TextField
         id="standard-read-only-input"
@@ -65,6 +59,7 @@ const OwnerProfileCard = () => {
         }}
         variant={owner.email ? "filled" : "standard"}
       />
+      <UpdateOwnerModal owner={owner} />
     </Stack>
     // {/* </Box> */}
   );

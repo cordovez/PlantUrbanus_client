@@ -26,6 +26,7 @@ export default function Login() {
           alignItems: "center",
           backgroundImage: `url(${BackgroundImage})`,
           backgroundSize: "cover",
+          width: "100vw",
           height: "100vh",
         }}
       >

@@ -76,6 +76,7 @@ const PlantPhotoUpload = () => {
   async function handleSubmit() {
     await uploadImage();
     navigate("/plants");
+    window.location.reload();
   }
 
   //   function showPreview(event) {

@@ -28,8 +28,6 @@ const UPDATE_OWNER = gql`
       firstName
       lastName
       email
-      password
-      token
       avatar
     }
   }

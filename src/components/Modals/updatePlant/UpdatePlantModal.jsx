@@ -1,10 +1,10 @@
 import { useMutation } from "@apollo/client";
-import { useForm } from "../../utilities/hooks";
+import { useForm } from "../../../utilities/hooks";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-import { UPDATE_PLANT } from "../../graphql/mutations/plantMutations";
+import { UPDATE_PLANT } from "../../../graphql/mutations/plantMutations";
 
 // MUI
 import TextField from "@mui/material/TextField";
@@ -17,17 +17,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import { Label, PropaneRounded } from "@mui/icons-material";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import { modalStyles } from "../modalStyles";
 
 const UpdatePlantModal = (props) => {
   const location = useLocation();
@@ -98,8 +88,8 @@ const UpdatePlantModal = (props) => {
     updatePlant();
   }
 
-  function onSubmitAndClose() {
-    onSubmit();
+  function onSubmitAndClose(event) {
+    onSubmit(event);
     handleClose();
     props.refetch();
   }
@@ -118,7 +108,7 @@ const UpdatePlantModal = (props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <Box sx={modalStyles}>
           <Stack spacing={2} paddingBottom={2}>
             <TextField
               label="commonName"
@@ -194,7 +184,12 @@ const UpdatePlantModal = (props) => {
               onChange={onChange}
             />
           </Stack>
-          <Button variant="contained" onClick={onSubmitAndClose}>
+          <Button
+            variant="contained"
+            onClick={(event) => {
+              onSubmitAndClose(event);
+            }}
+          >
             Register
           </Button>
         </Box>
